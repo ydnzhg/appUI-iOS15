@@ -9,19 +9,19 @@ import SwiftUI
 
 struct RehabView: View {
     
-    @Binding var workoutInfo: WorkoutInfo
-
+    //@Binding var workoutInfo: WorkoutInfo
+    @ObservedObject var rehabDataObject : RehabViewDataHelper
     var body: some View {
         ScrollView {
             VStack(spacing: 10) {
-                WorkoutQuestion(selection: $workoutInfo.completed)
+                WorkoutQuestion(selection: $rehabDataObject.didWorkout)
                 
-                if workoutInfo.completed == 1 {
-                    BodyPartQuestion(selection: $workoutInfo.bodyPart)
+                if rehabDataObject.didWorkout == 1 {
+                    BodyPartQuestion(selection: $rehabDataObject.partOfBody)
                     
-                    SetsAndIntensityQuestion(sets: $workoutInfo.sets, intensity: $workoutInfo.intensity)
+                    SetsAndIntensityQuestion(sets: $rehabDataObject.sets, intensity: $rehabDataObject.intensity)
                     
-                    PainQuestion(pain: $workoutInfo.pain)
+                    PainQuestion(pain: $rehabDataObject.pain)
                     
                     Spacer()
                 }
@@ -32,7 +32,7 @@ struct RehabView: View {
 
 struct RehabView_Previews: PreviewProvider {
     static var previews: some View {
-        RehabView(workoutInfo: .constant(WorkoutInfo.today))
+        RehabView(rehabDataObject: RehabViewDataHelper(date:Date()))
     }
 }
 

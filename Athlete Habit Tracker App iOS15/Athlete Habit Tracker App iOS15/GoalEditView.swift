@@ -9,13 +9,13 @@ import SwiftUI
 
 struct GoalEditView: View {
     
-    @Binding var trainingHabits: [TrainingHabit]
-    
+    //@Binding var trainingHabits: [TrainingHabit]
+    @ObservedObject var traceOptionsObject : ProfileViewDataHelper
     var body: some View {
         ScrollView {
             VStack(spacing: 15) {
-                ForEach($trainingHabits) { $trainingHabit in
-                    TrainingHabitGoalTextField(trainingHabit: $trainingHabit)
+                ForEach(0..<traceOptionsObject.optionsArray.count) { num in
+                TrainingHabitGoalTextField(trainingHabit: $traceOptionsObject.optionsArray[num])
                 }
             }
         }
@@ -24,13 +24,13 @@ struct GoalEditView: View {
 
 struct GoalEditView_Previews: PreviewProvider {
     static var previews: some View {
-        GoalEditView(trainingHabits: .constant(TrainingHabit.sampleData))
+        GoalEditView(traceOptionsObject: ProfileViewDataHelper())
     }
 }
 
 struct TrainingHabitGoalTextField: View {
     
-    @Binding var trainingHabit: TrainingHabit
+    @Binding var trainingHabit: TraceOptionsDataModel
     
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .leading, vertical: .center)) {
@@ -45,7 +45,7 @@ struct TrainingHabitGoalTextField: View {
                 Text("\(trainingHabit.title) Goal:")
                     .foregroundColor(Color.black.opacity(0.7))
                 Spacer()
-                TextField("\(trainingHabit.units)", value: $trainingHabit.goal, format: .number)
+                TextField("\(trainingHabit.unit)", value: $trainingHabit.goal, format: .number)
                     .font(.body.bold())
                     .foregroundColor(.highblue)
                     .frame(width: 100)

@@ -11,12 +11,12 @@ struct DailyView: View {
     
     @State var isPresentingTrainingHabitInputView = false
     
-    @Binding var trainingHabits: [TrainingHabit]
+   // @Binding var trainingHabits: [TrainingHabit]
     
     @Binding var selectedTabIndex: Int
     
     @Binding var selectedHabit: Int
-    
+    @ObservedObject var traceOptionsObject:DailyViewDataHelper
     var columns = Array(repeating: GridItem(.flexible(), spacing: 20), count: 2)
     
     var body: some View {
@@ -58,22 +58,22 @@ struct DailyView: View {
                     }
                  }
                  */
-                ForEach(0..<trainingHabits.count) { num in
+                ForEach(0..<traceOptionsObject.optionsArray.count) { num in
                     Button(action: {
                         selectedTabIndex = 3
                         selectedHabit = num
                     }) {
                         ZStack(alignment: Alignment(horizontal: .trailing, vertical: .top)) {
                             VStack(alignment: .leading, spacing: 15) {
-                                Text("\(trainingHabits[num].title)")
+                                Text("\(traceOptionsObject.optionsArray[num].title)")
                                     .foregroundColor(.white)
                                     
-                                Text("\(trainingHabits[num].today) \(trainingHabits[num].shortUnits)")
+                                Text("\(traceOptionsObject.optionsArray[num].inputScore) \(traceOptionsObject.optionsArray[num].shortUnits)")
                                     .font(.title.bold())
                                     .foregroundColor(.white)
                                     
                                 HStack {
-                                    Text("Goal: \(trainingHabits[num].goal) \(trainingHabits[num].units)")
+                                    Text("Goal: \(traceOptionsObject.optionsArray[num].goal) \(traceOptionsObject.optionsArray[num].unit)")
                                         .foregroundColor(.white)
                                         .font(.subheadline)
                                     Spacer(minLength: 0)
@@ -81,11 +81,11 @@ struct DailyView: View {
                                 }
                             }
                             .padding()
-                            .background(trainingHabits[num].today != 0 ? trainingHabits[num].palette.mainColor : .twinkleblue)
+                            .background(traceOptionsObject.optionsArray[num].inputScore != 0 ? traceOptionsObject.optionsArray[num].palette.mainColor : .twinkleblue)
                             .cornerRadius(20)
                             .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 5)
                                 
-                            Image(systemName: "\(trainingHabits[num].icon)")
+                            Image(systemName: "\(traceOptionsObject.optionsArray[num].icon)")
                                 .padding()
                                 .foregroundColor(.white)
                         }
@@ -113,7 +113,7 @@ struct DailyView: View {
                 , alignment: .bottomTrailing)
         .sheet(isPresented: $isPresentingTrainingHabitInputView) {
             NavigationView {
-                TrainingHabitInputView(trainingHabits: $trainingHabits)
+                TrainingHabitInputView(traceOptionsObject:traceOptionsObject)
                     .navigationTitle("Input Today's Info")
                     .toolbar {
                         ToolbarItem(placement: .cancellationAction) {
@@ -123,6 +123,7 @@ struct DailyView: View {
                         }
                         ToolbarItem(placement: .confirmationAction) {
                             Button("Done") {
+                                traceOptionsObject.commitToOptionsDetailDB()
                                 isPresentingTrainingHabitInputView = false
                             }
                         }
@@ -132,8 +133,8 @@ struct DailyView: View {
     }
 }
 
-struct DailyView_Previews: PreviewProvider {
+/*struct DailyView_Previews: PreviewProvider {
     static var previews: some View {
-        DailyView(trainingHabits: .constant(TrainingHabit.sampleData), selectedTabIndex: .constant(0), selectedHabit: .constant(0))
+        DailyView(traceOptionsObject:DailyViewDataHelper(detail: true, date: Date()), selectedTabIndex: .constant(0), selectedHabit: .constant(0))
     }
-}
+}*/

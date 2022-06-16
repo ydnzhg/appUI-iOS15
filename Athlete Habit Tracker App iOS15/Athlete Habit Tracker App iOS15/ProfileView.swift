@@ -13,9 +13,9 @@ struct ProfileView: View {
     @State private var isPresentingGoalEditView = false
     @State private var isPresentingQuoteEditView = false
 
-    @Binding var trainingHabits: [TrainingHabit]
-    @Binding var user: User
-
+    @Binding var isGoalAlter : Bool
+    @ObservedObject var user = UserInfoDataObject()
+    @ObservedObject var traceOptionsObject = ProfileViewDataHelper()
     var body: some View {
         VStack {
             Text("Profile")
@@ -23,11 +23,11 @@ struct ProfileView: View {
                 .padding()
                 .shadow(color: Color.black.opacity(0.2), radius: 2, x: 0, y: 2)
             VStack {
-                Image(user.profilePicture)
+                Image(user.picturePath)
                     .resizable()
                     .frame(width: 120, height: 120)
                     .clipShape(Circle())
-                Text(user.name)
+                Text(user.userName)
                     .font(.title.bold())
                     .shadow(color: Color.black.opacity(0.2), radius: 1, x: 0, y: 1)
             }
@@ -50,7 +50,7 @@ struct ProfileView: View {
                         .foregroundColor(.bluegrey)
                 }
                 VStack {
-                    Text("\(user.height / 12 )'\(user.height % 12)\"")
+                    Text("\(user.heightInchesEx / 12 )'\(user.heightInchesEx % 12)\"")
                         .font(.title2.bold())
                         .foregroundColor(.highblue)
                     Text("Height")
@@ -81,7 +81,7 @@ struct ProfileView: View {
                 }
                 .sheet(isPresented: $isPresentingInfoEditView) {
                     NavigationView {
-                        InfoEditView(user: $user)
+                        InfoEditView(user: user)
                             .navigationTitle("Edit Info")
                             .toolbar {
                                 ToolbarItem(placement: .cancellationAction) {
@@ -91,6 +91,7 @@ struct ProfileView: View {
                                 }
                                 ToolbarItem(placement: .confirmationAction) {
                                     Button("Done") {
+                                        user.commitToDB()
                                         isPresentingInfoEditView = false
                                     }
                                 }
@@ -110,7 +111,7 @@ struct ProfileView: View {
                 }
                 .sheet(isPresented: $isPresentingGoalEditView) {
                     NavigationView {
-                        GoalEditView(trainingHabits: $trainingHabits)
+                        GoalEditView(traceOptionsObject: traceOptionsObject)
                             .navigationTitle("Change Goals")
                             .toolbar {
                                 ToolbarItem(placement: .cancellationAction) {
@@ -120,6 +121,8 @@ struct ProfileView: View {
                                 }
                                 ToolbarItem(placement: .confirmationAction) {
                                     Button("Done") {
+                                        isGoalAlter = true
+                                        traceOptionsObject.commitToOptionsDB()
                                         isPresentingGoalEditView = false
                                     }
                                 }
@@ -133,6 +136,6 @@ struct ProfileView: View {
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView(trainingHabits: .constant(TrainingHabit.sampleData), user: .constant(User.sampleData))
+        ProfileView(isGoalAlter:.constant(false), user: UserInfoDataObject())
     }
 }

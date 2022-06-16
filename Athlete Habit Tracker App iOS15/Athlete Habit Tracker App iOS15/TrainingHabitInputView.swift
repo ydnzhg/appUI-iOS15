@@ -9,14 +9,17 @@ import SwiftUI
 
 struct TrainingHabitInputView: View {
     
-    @Binding var trainingHabits: [TrainingHabit]
-
+   // @Binding var trainingHabits: [TrainingHabit]
+    @ObservedObject var traceOptionsObject : DailyViewDataHelper
     var body: some View {
         ScrollView {
             VStack(spacing: 15) {
-                ForEach($trainingHabits) { $trainingHabit in
-                    TrainingHabitInputTextField(trainingHabit: $trainingHabit, placeholder: "\(trainingHabit.title)")
+                ForEach(0..<traceOptionsObject.optionsArray.count) { num in
+                    TrainingHabitInputTextField(trainingHabit: $traceOptionsObject.optionsArray[num], placeholder: "\(traceOptionsObject.optionsArray[num].title)")
                 }
+                //ForEach($trainingHabits) { $trainingHabit in
+                 //   TrainingHabitInputTextField(trainingHabit: $trainingHabit, placeholder: "\(trainingHabit.title)")
+                //}
                 Spacer()
             }
         }
@@ -25,13 +28,13 @@ struct TrainingHabitInputView: View {
 
 struct TrainingHabitInputView_Previews: PreviewProvider {
     static var previews: some View {
-        TrainingHabitInputView(trainingHabits: .constant(TrainingHabit.sampleData))
+        TrainingHabitInputView(traceOptionsObject: DailyViewDataHelper(detail: true, date: Date()))
     }
 }
 
 struct TrainingHabitInputTextField: View {
     
-    @Binding var trainingHabit: TrainingHabit
+    @Binding var trainingHabit: TraceOptionsDataModel
     var placeholder: String
     
     var body: some View {
@@ -47,7 +50,7 @@ struct TrainingHabitInputTextField: View {
                 Text("\(placeholder): ")
                     .foregroundColor(Color.black.opacity(0.7))
                 Spacer()
-                TextField("\(trainingHabit.units)", value: $trainingHabit.today, format: .number)
+                TextField("\(trainingHabit.unit)", value: $trainingHabit.inputScore, format: .number)
                     .font(.body.bold())
                     .foregroundColor(.highblue)
                     .frame(width: 100)

@@ -7,6 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E50A68F2859E5FC006B78B3 /* SQLiteDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50A67C2859E5FC006B78B3 /* SQLiteDataStore.swift */; };
+		0E50A6902859E5FC006B78B3 /* RehabDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50A67E2859E5FC006B78B3 /* RehabDataModel.swift */; };
+		0E50A6912859E5FC006B78B3 /* TraceOptionsDetailDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50A67F2859E5FC006B78B3 /* TraceOptionsDetailDataModel.swift */; };
+		0E50A6922859E5FC006B78B3 /* UserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50A6802859E5FC006B78B3 /* UserDataModel.swift */; };
+		0E50A6932859E5FC006B78B3 /* TraceOptionsDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50A6812859E5FC006B78B3 /* TraceOptionsDataModel.swift */; };
+		0E50A6942859E5FC006B78B3 /* TraceOptionsDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50A6832859E5FC006B78B3 /* TraceOptionsDataHelper.swift */; };
+		0E50A6952859E5FC006B78B3 /* RehabDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50A6842859E5FC006B78B3 /* RehabDataHelper.swift */; };
+		0E50A6962859E5FC006B78B3 /* TraceOptionsDetailDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50A6852859E5FC006B78B3 /* TraceOptionsDetailDataHelper.swift */; };
+		0E50A6972859E5FC006B78B3 /* UserinfoDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50A6862859E5FC006B78B3 /* UserinfoDataHelper.swift */; };
+		0E50A6982859E5FC006B78B3 /* DataHelperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50A6872859E5FC006B78B3 /* DataHelperProtocol.swift */; };
+		0E50A6992859E5FC006B78B3 /* ChartAndViewDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50A6892859E5FC006B78B3 /* ChartAndViewDataHelper.swift */; };
+		0E50A69A2859E5FC006B78B3 /* ProfileViewDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50A68A2859E5FC006B78B3 /* ProfileViewDataHelper.swift */; };
+		0E50A69B2859E5FC006B78B3 /* DailyViewDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50A68B2859E5FC006B78B3 /* DailyViewDataHelper.swift */; };
+		0E50A69C2859E5FC006B78B3 /* RehabViewDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50A68C2859E5FC006B78B3 /* RehabViewDataHelper.swift */; };
+		0E50A69D2859E5FC006B78B3 /* EntryModalViewDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50A68D2859E5FC006B78B3 /* EntryModalViewDataHelper.swift */; };
+		0E9FB894285ACB3B00AB9FB6 /* SQLite.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E50A6792859E5FC006B78B3 /* SQLite.xcframework */; };
+		0E9FB895285ACB3B00AB9FB6 /* SQLite.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0E50A6792859E5FC006B78B3 /* SQLite.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F4A2E2542858244300A32CD8 /* Athlete_Habit_Tracker_App_iOS15App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A2E2532858244300A32CD8 /* Athlete_Habit_Tracker_App_iOS15App.swift */; };
 		F4A2E2562858244300A32CD8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A2E2552858244300A32CD8 /* ContentView.swift */; };
 		F4A2E2582858244600A32CD8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4A2E2572858244600A32CD8 /* Assets.xcassets */; };
@@ -26,7 +43,37 @@
 		F4A2E27B2858278200A32CD8 /* InfoEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A2E27A2858278200A32CD8 /* InfoEditView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		0E9FB896285ACB3B00AB9FB6 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0E9FB895285ACB3B00AB9FB6 /* SQLite.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		0E50A6792859E5FC006B78B3 /* SQLite.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = SQLite.xcframework; sourceTree = "<group>"; };
+		0E50A67C2859E5FC006B78B3 /* SQLiteDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteDataStore.swift; sourceTree = "<group>"; };
+		0E50A67E2859E5FC006B78B3 /* RehabDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RehabDataModel.swift; sourceTree = "<group>"; };
+		0E50A67F2859E5FC006B78B3 /* TraceOptionsDetailDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TraceOptionsDetailDataModel.swift; sourceTree = "<group>"; };
+		0E50A6802859E5FC006B78B3 /* UserDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataModel.swift; sourceTree = "<group>"; };
+		0E50A6812859E5FC006B78B3 /* TraceOptionsDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TraceOptionsDataModel.swift; sourceTree = "<group>"; };
+		0E50A6832859E5FC006B78B3 /* TraceOptionsDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TraceOptionsDataHelper.swift; sourceTree = "<group>"; };
+		0E50A6842859E5FC006B78B3 /* RehabDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RehabDataHelper.swift; sourceTree = "<group>"; };
+		0E50A6852859E5FC006B78B3 /* TraceOptionsDetailDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TraceOptionsDetailDataHelper.swift; sourceTree = "<group>"; };
+		0E50A6862859E5FC006B78B3 /* UserinfoDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserinfoDataHelper.swift; sourceTree = "<group>"; };
+		0E50A6872859E5FC006B78B3 /* DataHelperProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataHelperProtocol.swift; sourceTree = "<group>"; };
+		0E50A6892859E5FC006B78B3 /* ChartAndViewDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartAndViewDataHelper.swift; sourceTree = "<group>"; };
+		0E50A68A2859E5FC006B78B3 /* ProfileViewDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewDataHelper.swift; sourceTree = "<group>"; };
+		0E50A68B2859E5FC006B78B3 /* DailyViewDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyViewDataHelper.swift; sourceTree = "<group>"; };
+		0E50A68C2859E5FC006B78B3 /* RehabViewDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RehabViewDataHelper.swift; sourceTree = "<group>"; };
+		0E50A68D2859E5FC006B78B3 /* EntryModalViewDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryModalViewDataHelper.swift; sourceTree = "<group>"; };
 		F44D7C422858CD1D00A4B7A3 /* ChartView-2.0.0-beta.2 */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "ChartView-2.0.0-beta.2"; path = "../../ChartView-2.0.0-beta.2"; sourceTree = "<group>"; };
 		F4A2E2502858244300A32CD8 /* Athlete Habit Tracker App iOS15.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Athlete Habit Tracker App iOS15.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4A2E2532858244300A32CD8 /* Athlete_Habit_Tracker_App_iOS15App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Athlete_Habit_Tracker_App_iOS15App.swift; sourceTree = "<group>"; };
@@ -53,12 +100,77 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E9FB894285ACB3B00AB9FB6 /* SQLite.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E50A6782859E5FC006B78B3 /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				0E50A6792859E5FC006B78B3 /* SQLite.xcframework */,
+				0E50A67A2859E5FC006B78B3 /* DBManager */,
+			);
+			name = DataBase;
+			path = "Athlete Habit Tracker App iOS15/DataBase";
+			sourceTree = "<group>";
+		};
+		0E50A67A2859E5FC006B78B3 /* DBManager */ = {
+			isa = PBXGroup;
+			children = (
+				0E50A67B2859E5FC006B78B3 /* Connection */,
+				0E50A67D2859E5FC006B78B3 /* Model */,
+				0E50A6822859E5FC006B78B3 /* DataHelper */,
+				0E50A6882859E5FC006B78B3 /* ViewDataHelper */,
+			);
+			path = DBManager;
+			sourceTree = "<group>";
+		};
+		0E50A67B2859E5FC006B78B3 /* Connection */ = {
+			isa = PBXGroup;
+			children = (
+				0E50A67C2859E5FC006B78B3 /* SQLiteDataStore.swift */,
+			);
+			path = Connection;
+			sourceTree = "<group>";
+		};
+		0E50A67D2859E5FC006B78B3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0E50A67E2859E5FC006B78B3 /* RehabDataModel.swift */,
+				0E50A67F2859E5FC006B78B3 /* TraceOptionsDetailDataModel.swift */,
+				0E50A6802859E5FC006B78B3 /* UserDataModel.swift */,
+				0E50A6812859E5FC006B78B3 /* TraceOptionsDataModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0E50A6822859E5FC006B78B3 /* DataHelper */ = {
+			isa = PBXGroup;
+			children = (
+				0E50A6832859E5FC006B78B3 /* TraceOptionsDataHelper.swift */,
+				0E50A6842859E5FC006B78B3 /* RehabDataHelper.swift */,
+				0E50A6852859E5FC006B78B3 /* TraceOptionsDetailDataHelper.swift */,
+				0E50A6862859E5FC006B78B3 /* UserinfoDataHelper.swift */,
+				0E50A6872859E5FC006B78B3 /* DataHelperProtocol.swift */,
+			);
+			path = DataHelper;
+			sourceTree = "<group>";
+		};
+		0E50A6882859E5FC006B78B3 /* ViewDataHelper */ = {
+			isa = PBXGroup;
+			children = (
+				0E50A6892859E5FC006B78B3 /* ChartAndViewDataHelper.swift */,
+				0E50A68A2859E5FC006B78B3 /* ProfileViewDataHelper.swift */,
+				0E50A68B2859E5FC006B78B3 /* DailyViewDataHelper.swift */,
+				0E50A68C2859E5FC006B78B3 /* RehabViewDataHelper.swift */,
+				0E50A68D2859E5FC006B78B3 /* EntryModalViewDataHelper.swift */,
+			);
+			path = ViewDataHelper;
+			sourceTree = "<group>";
+		};
 		F44D7C412858CD1D00A4B7A3 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +182,7 @@
 		F4A2E2472858244300A32CD8 = {
 			isa = PBXGroup;
 			children = (
+				0E50A6782859E5FC006B78B3 /* DataBase */,
 				F44D7C412858CD1D00A4B7A3 /* Packages */,
 				F4A2E2522858244300A32CD8 /* Athlete Habit Tracker App iOS15 */,
 				F4A2E2512858244300A32CD8 /* Products */,
@@ -134,6 +247,7 @@
 				F4A2E24C2858244300A32CD8 /* Sources */,
 				F4A2E24D2858244300A32CD8 /* Frameworks */,
 				F4A2E24E2858244300A32CD8 /* Resources */,
+				0E9FB896285ACB3B00AB9FB6 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -198,21 +312,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E50A69B2859E5FC006B78B3 /* DailyViewDataHelper.swift in Sources */,
+				0E50A6952859E5FC006B78B3 /* RehabDataHelper.swift in Sources */,
 				F4A2E2712858270B00A32CD8 /* TrainingHabitInputView.swift in Sources */,
 				F4A2E2652858260A00A32CD8 /* User.swift in Sources */,
+				0E50A6982859E5FC006B78B3 /* DataHelperProtocol.swift in Sources */,
 				F4A2E2732858272500A32CD8 /* RehabView.swift in Sources */,
 				F4A2E262285825B700A32CD8 /* DailyView.swift in Sources */,
 				F4A2E2752858273500A32CD8 /* ProfileView.swift in Sources */,
+				0E50A6922859E5FC006B78B3 /* UserDataModel.swift in Sources */,
+				0E50A6912859E5FC006B78B3 /* TraceOptionsDetailDataModel.swift in Sources */,
+				0E50A6972859E5FC006B78B3 /* UserinfoDataHelper.swift in Sources */,
+				0E50A6902859E5FC006B78B3 /* RehabDataModel.swift in Sources */,
 				F4A2E2562858244300A32CD8 /* ContentView.swift in Sources */,
 				F4A2E2692858265A00A32CD8 /* WorkoutInfo.swift in Sources */,
 				F4A2E2772858275300A32CD8 /* LoadCapacityPredictionView.swift in Sources */,
 				F4A2E2672858264200A32CD8 /* TrainingHabit.swift in Sources */,
+				0E50A6992859E5FC006B78B3 /* ChartAndViewDataHelper.swift in Sources */,
+				0E50A69C2859E5FC006B78B3 /* RehabViewDataHelper.swift in Sources */,
+				0E50A6932859E5FC006B78B3 /* TraceOptionsDataModel.swift in Sources */,
+				0E50A68F2859E5FC006B78B3 /* SQLiteDataStore.swift in Sources */,
 				F4A2E26D285826DE00A32CD8 /* ProgressView.swift in Sources */,
+				0E50A69A2859E5FC006B78B3 /* ProfileViewDataHelper.swift in Sources */,
+				0E50A6942859E5FC006B78B3 /* TraceOptionsDataHelper.swift in Sources */,
+				0E50A6962859E5FC006B78B3 /* TraceOptionsDetailDataHelper.swift in Sources */,
 				F4A2E2542858244300A32CD8 /* Athlete_Habit_Tracker_App_iOS15App.swift in Sources */,
 				F4A2E27B2858278200A32CD8 /* InfoEditView.swift in Sources */,
 				F4A2E2792858276C00A32CD8 /* GoalEditView.swift in Sources */,
 				F4A2E26B2858268400A32CD8 /* Palette.swift in Sources */,
 				F4A2E26F285826F900A32CD8 /* TrainingHabitView.swift in Sources */,
+				0E50A69D2859E5FC006B78B3 /* EntryModalViewDataHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +470,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Athlete Habit Tracker App iOS15/Preview Content\"";
+				DEVELOPMENT_TEAM = K5436W6BF3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -348,6 +478,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -369,6 +500,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Athlete Habit Tracker App iOS15/Preview Content\"";
+				DEVELOPMENT_TEAM = K5436W6BF3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -376,6 +508,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

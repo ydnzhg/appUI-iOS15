@@ -9,19 +9,18 @@ import SwiftUI
 
 struct InfoEditView: View {
     
-    @Binding var user: User
-    
+    @ObservedObject var user: UserInfoDataObject
     var body: some View {
         
         VStack(spacing: 20) {
             
-            NameEditTextField(image: "signature", label: "Name: ", value: $user.name)
+            NameEditTextField(image: "signature", label: "Name: ", value: $user.userName)
             
             GenderPicker(image: "person.fill", label: "Gender: ", value: $user.gender)
             
             InfoEditTextField(image: "calendar", placeholder: "Age: ", units: "yrs",value: $user.age)
             
-            InfoEditTextField(image: "ruler.fill", placeholder: "Height: ", units: "in", value: $user.height)
+            InfoEditTextField(image: "ruler.fill", placeholder: "Height: ", units: "in", value: $user.heightInchesEx)
             
             InfoEditTextField(image: "scalemass.fill", placeholder: "Weight: ", units: "lbs", value: $user.weight)
 
@@ -34,7 +33,7 @@ struct InfoEditView: View {
 
 struct InfoEditView_Previews: PreviewProvider {
     static var previews: some View {
-        InfoEditView(user: .constant(User.sampleData))
+        InfoEditView(user: UserInfoDataObject())
     }
 }
 

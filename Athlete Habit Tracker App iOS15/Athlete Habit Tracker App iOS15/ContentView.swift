@@ -20,7 +20,9 @@ struct ContentView: View {
     @State private var date = Date()
     
     @State private var selectedTabIndex = 0
-    
+    @State private var isGoalAlter: Bool = false
+    @ObservedObject var rehabDataObject = RehabViewDataHelper(date:Date())
+    @ObservedObject var traceOptionsObject = DailyViewDataHelper(detail: true, date: Date())
     let tabBarImageNames = ["list.bullet.rectangle.portrait.fill", "heart.text.square.fill", "sparkle", "chart.xyaxis.line", "person.fill"]
     
     @State private var isPresentingInfoEditView = true
@@ -34,7 +36,7 @@ struct ContentView: View {
                 switch selectedTabIndex {
                 case 0:
                     NavigationView {
-                        DailyView(trainingHabits: $trainingHabits, selectedTabIndex: $selectedTabIndex, selectedHabit: $selectedHabit)
+                        DailyView( selectedTabIndex: $selectedTabIndex, selectedHabit: $selectedHabit,traceOptionsObject: traceOptionsObject)
                             .navigationTitle("Training Habits")
                             .toolbar {
                                 HStack {
@@ -42,16 +44,31 @@ struct ContentView: View {
                                     Image(systemName: "calendar")
                                 }
                             }
+                            .onReceive([date].publisher.first())
+                            {(value) in
+                                traceOptionsObject.changeDate(date: value)
+                            }
                     }
                 case 1:
                     NavigationView {
-                        RehabView(workoutInfo: $workoutInfo)
+                        RehabView(rehabDataObject:rehabDataObject)
                             .navigationTitle("Workout Log")
                             .toolbar {
                                 HStack {
                                     DatePicker("", selection: $date, in: ...Date(), displayedComponents: .date)
+                                        .onReceive([date].publisher.first())
+                                        {(value) in
+                                            rehabDataObject.changeDate(date:date)
+                                        }
+                                    
                                     Image(systemName: "calendar")
-                                }                            }
+                                }
+                                
+                            }
+                            .onReceive([rehabDataObject.didWorkout].publisher.first())
+                            {(value) in
+                                    rehabDataObject.commitToDB()
+                            }
                     }
                 case 2:
                     NavigationView {
@@ -88,7 +105,15 @@ struct ContentView: View {
                             }
                     }
                 case 4:
-                    ProfileView(trainingHabits: $trainingHabits, user: $user)
+                    ProfileView(isGoalAlter:$isGoalAlter)
+                    .onReceive([isGoalAlter].publisher.first())
+                    {(value) in
+                         if(isGoalAlter)
+                         {
+                             traceOptionsObject.updateGoal()
+                         }
+                        isGoalAlter = false;
+                    }
                 default:
                     Text("Test")
                 }
