@@ -16,9 +16,17 @@ struct LoadCapacityPredictionView: View {
     
     @State private var selectedTimeToo: Int = 0
     
-    let painLastWeek: [Double] = [3, 1, 1, 10, 0, 2, 8]
-    let painLast2Weeks: [Double] = [5, 10, 1, 6, 5, 0, 7, 4, 7, 1, 6, 3, 9, 5]
-    let painLastMonth: [Double] = [5, 1, 10, 3, 6, 10, 4, 5, 6, 9, 2, 4, 10, 2, 7, 6, 0, 2, 5, 6, 10, 3, 0, 4, 0, 10, 9, 2, 10, 3]
+    let loadLastWeek: [Double] = [93,75,32,14,23,59,23]
+    let recoveryLastWeek: [Double] = [35,22,28,71,1,0,7]
+    let painLastWeek: [Double] = [72,78,61,5,8,25,31]
+
+    let loadLast2Weeks: [Double] = [51,24,64,75,61,46,56,41,91,62,21,100,95,19]
+    let recoveryLast2Weeks: [Double] = [58,26,29,75,19,39,99,27,79,76,29,87,52,41]
+    let painLast2Weeks: [Double] = [97,46,52,69,48,41,62,15,57,16,68,57,96,5]
+    
+    let loadLastMonth: [Double] = [25,48,90,34,3,59,8,86,78,15,68,70,77,47,23,75,20,57,48,71,71,28,49,2,5,31,47,4,89,0]
+    let recoveryLastMonth: [Double] = [57,40,91,30,84,67,56,84,39,1,69,0,59,97,93,25,0,8,20,64,68,38,36,65,22,87,39,11,60,57]
+    let painLastMonth: [Double] = [10,49,84,40,5,12,51,86,47,56,87,48,24,40,85,34,98,0,82,21,85,74,6,78,24,1,3,51,99,51]
                     
     var body: some View {
         ScrollView {
@@ -31,17 +39,30 @@ struct LoadCapacityPredictionView: View {
                 .pickerStyle(SegmentedPickerStyle())
                 .padding(.horizontal)
                 
-                let sampleData = [painLastWeek, painLast2Weeks, painLastMonth]
-                                
-                CardView {
-                    ChartLabel("Pain", type: .subTitle)
+                let sampleData = [[loadLastWeek, recoveryLastWeek, painLastWeek], [loadLast2Weeks, recoveryLast2Weeks, painLast2Weeks], [loadLastMonth, recoveryLastMonth, painLastMonth]]
+                
+                ZStack {
+                    CardView {
+                        ChartLabel("Pain", type: .subTitle)
+                        LineChart()
+                    }
+                    .data(sampleData[selectedTimeToo][2])
+                    .chartStyle(ChartStyle(backgroundColor: .white, foregroundColor: ColorGradient(Color.fusionred.opacity(0.4), Color.fusionred)))
+                    .frame(height: 275)
+                    
                     LineChart()
+                        .data(sampleData[selectedTimeToo][1])
+                        .chartStyle(ChartStyle(backgroundColor: .white, foregroundColor: ColorGradient(Color.flirtacious.opacity(0.4), Color.flirtacious)))
+                        .frame(height: 275)
+                    
+                    LineChart()
+                        .data(sampleData[selectedTimeToo][0])
+                        .chartStyle(ChartStyle(backgroundColor: .white.opacity(0.1), foregroundColor: ColorGradient(Color.highblue.opacity(0.4), Color.highblue)))
+                        .frame(height: 275)
                 }
-                .data(sampleData[selectedTimeToo])
-                .chartStyle(ChartStyle(backgroundColor: .white, foregroundColor: ColorGradient(Color.highblue.opacity(0.4), Color.highblue.opacity(0.7))))
-                .frame(height: 275)
                 .padding(.horizontal)
-
+                
+                
                 HStack {
                     VStack(spacing: 10) {
                         Text("\(workoutInfo.sets * Int(workoutInfo.intensity))")
@@ -50,7 +71,7 @@ struct LoadCapacityPredictionView: View {
                             .font(.caption)
                     }
                     .frame(width: 115, height: 75)
-                    .background(Color.twinkleblue)
+                    .background(Color.highblue.opacity(0.95))
                     .cornerRadius(10)
                     
                     VStack(spacing: 10) {
@@ -60,7 +81,7 @@ struct LoadCapacityPredictionView: View {
                             .font(.caption)
                     }
                     .frame(width: 115, height: 75)
-                    .background(Color.twinkleblue)
+                    .background(Color.flirtacious.opacity(0.95))
                     .cornerRadius(10)
                     
                     VStack(spacing: 10) {
@@ -70,7 +91,7 @@ struct LoadCapacityPredictionView: View {
                             .font(.caption)
                     }
                     .frame(width: 115, height: 75)
-                    .background(Color.twinkleblue)
+                    .background(Color.fusionred.opacity(0.95))
                     .cornerRadius(10)
                 }
                 .padding(.horizontal)
