@@ -16,6 +16,8 @@ struct ProgressView: View {
     
     @Binding var selectedHabit: Int
     
+    @State private var isExpanded: Bool = false
+    
     let daysOfTheWeek = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
     
     var columns = Array(repeating: GridItem(.flexible(), spacing: 10), count: 3)
@@ -55,6 +57,68 @@ struct ProgressView: View {
                     }
                 }
                 
+                DisclosureGroup {
+                    HStack(spacing: 10) {
+                        VStack(spacing: 5) {
+                            
+                            let sum = trainingHabits[selectedHabit].lastWeek.reduce(0, +)
+                            
+                            Text("\(sum / trainingHabits[selectedHabit].lastWeek.count) \(trainingHabits[selectedHabit].shortUnits)")
+                                .font(.title2.bold())
+                                .foregroundColor(.white)
+                            Text("Weekly Average")
+                                .font(.caption.bold())
+                                .foregroundColor(.white)
+                                .multilineTextAlignment(.center)
+                        }
+                        .frame(width: 100, height: 80)
+                        .background(Color.highblue.opacity(0.8))
+                        .cornerRadius(10)
+                        .shadow(color: Color.black.opacity(0.2), radius: 3, x: 0, y: 1)
+                        
+                        VStack(spacing: 5) {
+                            Text("\(trainingHabits[selectedHabit].lastWeek.min() ?? 8)  |  \(trainingHabits[selectedHabit].lastWeek.max() ?? 8)")
+                                .font(.title2.bold())
+                                .foregroundColor(.white)
+                            Text("Min and Max")
+                                .font(.caption.bold())
+                                .foregroundColor(.white)
+                                .multilineTextAlignment(.center)
+                        }
+                        .frame(width: 100, height: 80)
+                        .background(Color.highblue.opacity(0.8))
+                        .cornerRadius(10)
+                        .shadow(color: Color.black.opacity(0.2), radius: 3, x: 0, y: 1)
+                        
+                        VStack(spacing: 5) {
+                            Text("Test%")
+                                .font(.title2.bold())
+                                .foregroundColor(.white)
+                            Text("Trend")
+                                .font(.caption.bold())
+                                .foregroundColor(.white)
+                                .multilineTextAlignment(.center)
+                        }
+                        .frame(width: 100, height: 80)
+                        .background(Color.highblue.opacity(0.8))
+                        .cornerRadius(10)
+                        .shadow(color: Color.black.opacity(0.2), radius: 3, x: 0, y: 1)
+                    }
+                    .padding(.top, 10)
+                    .padding(.bottom, 5)
+                } label: {
+                    Label("Insights", systemImage: "lightbulb.fill")
+                        .font(.title3.bold())
+                }
+                .padding(.horizontal)
+                .padding(.top, 10)
+                .padding(.bottom, 10)
+                .accentColor(Color.highblue)
+                .background(RoundedRectangle(cornerRadius: 20)
+                    .foregroundColor(Color(.systemGray6))
+                )
+                .padding(.horizontal)
+                
                 LazyVGrid(columns: columns) {
                     Text("Date")
                         .frame(width: 100)
@@ -89,6 +153,7 @@ struct ProgressView: View {
                             .cornerRadius(10)
                         Text("\(trainingHabits[selectedHabit].lastWeek[num])")
                             .font(.body.bold())
+                            .foregroundColor(.highblue)
                             .frame(width: 80, height: 30)
                             .background(Color(.systemGray6))
                             .cornerRadius(10)
