@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 // 定义枚举
 enum DataInTime {
     case LastWeek
@@ -13,7 +14,7 @@ enum DataInTime {
     case LastMonth
 }
 
-class ChartAndDataViewHelper
+class ProgressViewDataHelper
 {
     var optionsArray:[TraceOptionsDataModel]
     var dataType:DataInTime
@@ -56,6 +57,50 @@ class ChartAndDataViewHelper
         }
         
         return TraceOptionsDetailDataModel();
+    }
+    func getDataTypeCount() -> Int{
+        if(dataType == DataInTime.LastWeek)
+        {
+            return 7
+        }else if(dataType == DataInTime.LastTwoWeek)
+        {
+            return 14
+        }
+        
+        return 28
+    }
+    func getTypeAllData(optionId: Int) -> [Int]
+    {
+        var retArray = [Int]()
+        for index  in 0...self.getDataTypeCount() - 1 {
+            let v = self.getDetailModel(index: index, optionId: optionId + 1)
+            retArray.append(v.inputScore)
+        
+        }
+        
+        return retArray
+    }
+    func getDataTypeObj(dataType:Int) -> ProgressViewDataHelper {
+        if(dataType == 0)
+        {
+            self.dataType = DataInTime.LastWeek
+            let nowDate = Date()
+            let nextDate:TimeInterval = TimeInterval(-24*60*60*6)
+            self.date = nowDate.addingTimeInterval(nextDate)//getWeekFirstDate(date:nowDate.addingTimeInterval(nextDate))
+        }else if(dataType == 1)
+        {
+            self.dataType = DataInTime.LastTwoWeek
+            let nowDate = Date()
+            let nextDate:TimeInterval = TimeInterval(-24*60*60*(7*2-1))
+            self.date = nowDate.addingTimeInterval(nextDate)//getWeekFirstDate(date:nowDate.addingTimeInterval(nextDate))
+        }else
+        {
+            self.dataType = DataInTime.LastMonth
+            let nowDate = Date()
+            let nextDate:TimeInterval = TimeInterval(-24*60*60*(7*4-1))
+            self.date = nowDate.addingTimeInterval(nextDate)
+        }
+        return self
     }
     func changeDataType(dataType:DataInTime) -> Void {
         self.dataType = dataType

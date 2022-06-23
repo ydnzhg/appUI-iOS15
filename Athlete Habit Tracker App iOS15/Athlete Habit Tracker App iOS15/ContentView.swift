@@ -23,6 +23,8 @@ struct ContentView: View {
     @State private var isGoalAlter: Bool = false
     @ObservedObject var rehabDataObject = RehabViewDataHelper(date:Date())
     @ObservedObject var traceOptionsObject = DailyViewDataHelper(detail: true, date: Date())
+    
+    @State private var progressObj = ProgressViewDataHelper(dataType:DataInTime.LastWeek)
     let tabBarImageNames = ["list.bullet.rectangle.portrait.fill", "heart.text.square.fill", "sparkle", "chart.xyaxis.line", "person.fill"]
     
     @State private var isPresentingInfoEditView = true
@@ -72,12 +74,12 @@ struct ContentView: View {
                     }
                 case 2:
                     NavigationView {
-                        LoadCapacityPredictionView(trainingHabits: $trainingHabits, workoutInfo: $workoutInfo)
+                        LoadCapacityPredictionView()
                             .navigationTitle("Load Capacity")
                     }
                 case 3:
                     NavigationView {
-                        ProgressView(trainingHabits: $trainingHabits, selectedHabit: $selectedHabit)
+                        ProgressView(selectedHabit: $selectedHabit,progressObj: progressObj)
                             .navigationTitle("Progress")
                             .toolbar {
                                 Picker(
@@ -85,18 +87,13 @@ struct ContentView: View {
                                     label:
                                         HStack {
                                             Text("Habit: ")
-                                            Text("\(trainingHabits[selectedHabit].title)")
+                                            Text("\(progressObj.optionsArray[selectedHabit].title)")
                                         }
                                     ,
                                     content: {
-                                        Text("\(trainingHabits[0].title)").tag(0)
-                                        Text("\(trainingHabits[1].title)").tag(1)
-                                        Text("\(trainingHabits[2].title)").tag(2)
-                                        Text("\(trainingHabits[3].title)").tag(3)
-                                        Text("\(trainingHabits[4].title)").tag(4)
-                                        Text("\(trainingHabits[5].title)").tag(5)
-                                        Text("\(trainingHabits[6].title)").tag(6)
-                                        Text("\(trainingHabits[7].title)").tag(7)
+                                        ForEach(0..<progressObj.optionsArray.count) { num in
+                                            Text("\(progressObj.optionsArray[num].title)").tag(num)
+                                        }
                                     })
                                 .pickerStyle(MenuPickerStyle())
                                 .padding(.horizontal, 10)
