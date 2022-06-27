@@ -31,9 +31,7 @@ struct ProfileView: View {
                     .font(.title.bold())
                     .shadow(color: Color.black.opacity(0.2), radius: 1, x: 0, y: 1)
             }
-                        
-            Spacer(minLength: 10)
-            
+                                    
             HStack(spacing: 30) {
                 VStack {
                     Text("\(user.gender == 0 ? "Male" : "Female")")
@@ -67,17 +65,27 @@ struct ProfileView: View {
             .padding(.top, 5)
             .padding(.bottom, 15)
             
-            List {
+            VStack(spacing: 15) {
                 Button(action: {
                     isPresentingInfoEditView = true
                 }) {
-                    HStack {
-                        Label("Edit User Information", systemImage: "pencil")
-                            .font(.body.bold())
-                        Spacer()
-                        Image(systemName: "chevron.right")
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 20)
+                            .foregroundColor(Color(.systemGray6))
+                            .frame(height: 45)
+                            .padding(.horizontal)
+                            .shadow(color: Color.black.opacity(0.2), radius: 2, x: 0, y: 2)
+                        
+                        HStack {
+                            Label("Edit User Information", systemImage: "pencil")
+                                .font(.body.bold())
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                        }
+                        .foregroundColor(.highblue)
+                        .padding(.horizontal, 30)
                     }
-                    .foregroundColor(.highblue)
+                    
                 }
                 .sheet(isPresented: $isPresentingInfoEditView) {
                     NavigationView {
@@ -98,16 +106,26 @@ struct ProfileView: View {
                             }
                     }
                 }
+                
                 Button(action: {
                     isPresentingGoalEditView = true
                 }) {
-                    HStack {
-                        Label("Change Daily Goals", systemImage: "flag.2.crossed.fill")
-                            .font(.body.bold())
-                        Spacer()
-                        Image(systemName: "chevron.right")
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 20)
+                            .foregroundColor(Color(.systemGray6))
+                            .frame(height: 45)
+                            .padding(.horizontal)
+                            .shadow(color: Color.black.opacity(0.2), radius: 2, x: 0, y: 2)
+                        
+                        HStack {
+                            Label("Change Daily Goals", systemImage: "flag.2.crossed.fill")
+                                .font(.body.bold())
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                        }
+                        .foregroundColor(.highblue)
+                        .padding(.horizontal, 30)
                     }
-                    .foregroundColor(.highblue)
                 }
                 .sheet(isPresented: $isPresentingGoalEditView) {
                     NavigationView {
@@ -130,6 +148,10 @@ struct ProfileView: View {
                     }
                 }
             }
+            
+            
+            Spacer()
+
         }
     }
 }

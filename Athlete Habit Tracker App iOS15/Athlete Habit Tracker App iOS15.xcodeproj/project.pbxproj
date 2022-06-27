@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E2CA26E285DBAA400293DF0 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 0E2CA26D285DBAA400293DF0 /* SwiftUICharts */; };
 		0E50A68F2859E5FC006B78B3 /* SQLiteDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50A67C2859E5FC006B78B3 /* SQLiteDataStore.swift */; };
 		0E50A6902859E5FC006B78B3 /* RehabDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50A67E2859E5FC006B78B3 /* RehabDataModel.swift */; };
 		0E50A6912859E5FC006B78B3 /* TraceOptionsDetailDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50A67F2859E5FC006B78B3 /* TraceOptionsDetailDataModel.swift */; };
@@ -26,6 +25,7 @@
 		0E54B7E82861D81B00291E08 /* LoadCapacityPredictionViewDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E54B7E72861D81B00291E08 /* LoadCapacityPredictionViewDataHelper.swift */; };
 		0E9FB894285ACB3B00AB9FB6 /* SQLite.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E50A6792859E5FC006B78B3 /* SQLite.xcframework */; };
 		0E9FB895285ACB3B00AB9FB6 /* SQLite.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0E50A6792859E5FC006B78B3 /* SQLite.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F449D07E28695D6B0056C29E /* NextSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = F449D07D28695D6B0056C29E /* NextSteps.swift */; };
 		F4A2E2542858244300A32CD8 /* Athlete_Habit_Tracker_App_iOS15App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A2E2532858244300A32CD8 /* Athlete_Habit_Tracker_App_iOS15App.swift */; };
 		F4A2E2562858244300A32CD8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A2E2552858244300A32CD8 /* ContentView.swift */; };
 		F4A2E2582858244600A32CD8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4A2E2572858244600A32CD8 /* Assets.xcassets */; };
@@ -43,6 +43,7 @@
 		F4A2E2772858275300A32CD8 /* LoadCapacityPredictionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A2E2762858275300A32CD8 /* LoadCapacityPredictionView.swift */; };
 		F4A2E2792858276C00A32CD8 /* GoalEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A2E2782858276C00A32CD8 /* GoalEditView.swift */; };
 		F4A2E27B2858278200A32CD8 /* InfoEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A2E27A2858278200A32CD8 /* InfoEditView.swift */; };
+		F4E4FF192864AD6300D4FD51 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = F4E4FF182864AD6300D4FD51 /* SwiftUICharts */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -77,7 +78,7 @@
 		0E50A68C2859E5FC006B78B3 /* RehabViewDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RehabViewDataHelper.swift; sourceTree = "<group>"; };
 		0E50A68D2859E5FC006B78B3 /* EntryModalViewDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryModalViewDataHelper.swift; sourceTree = "<group>"; };
 		0E54B7E72861D81B00291E08 /* LoadCapacityPredictionViewDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadCapacityPredictionViewDataHelper.swift; sourceTree = "<group>"; };
-		F44D7C422858CD1D00A4B7A3 /* ChartView-2.0.0-beta.2 */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "ChartView-2.0.0-beta.2"; path = "../../ChartView-2.0.0-beta.2"; sourceTree = "<group>"; };
+		F449D07D28695D6B0056C29E /* NextSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextSteps.swift; sourceTree = "<group>"; };
 		F4A2E2502858244300A32CD8 /* Athlete Habit Tracker App iOS15.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Athlete Habit Tracker App iOS15.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4A2E2532858244300A32CD8 /* Athlete_Habit_Tracker_App_iOS15App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Athlete_Habit_Tracker_App_iOS15App.swift; sourceTree = "<group>"; };
 		F4A2E2552858244300A32CD8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -104,7 +105,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E9FB894285ACB3B00AB9FB6 /* SQLite.xcframework in Frameworks */,
-				0E2CA26E285DBAA400293DF0 /* SwiftUICharts in Frameworks */,
+				F4E4FF192864AD6300D4FD51 /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,19 +177,10 @@
 			path = ViewDataHelper;
 			sourceTree = "<group>";
 		};
-		F44D7C412858CD1D00A4B7A3 /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-				F44D7C422858CD1D00A4B7A3 /* ChartView-2.0.0-beta.2 */,
-			);
-			name = Packages;
-			sourceTree = "<group>";
-		};
 		F4A2E2472858244300A32CD8 = {
 			isa = PBXGroup;
 			children = (
 				0E50A6782859E5FC006B78B3 /* DataBase */,
-				F44D7C412858CD1D00A4B7A3 /* Packages */,
 				F4A2E2522858244300A32CD8 /* Athlete Habit Tracker App iOS15 */,
 				F4A2E2512858244300A32CD8 /* Products */,
 			);
@@ -217,6 +209,7 @@
 				F4A2E2762858275300A32CD8 /* LoadCapacityPredictionView.swift */,
 				F4A2E2782858276C00A32CD8 /* GoalEditView.swift */,
 				F4A2E27A2858278200A32CD8 /* InfoEditView.swift */,
+				F449D07D28695D6B0056C29E /* NextSteps.swift */,
 				F4A2E2572858244600A32CD8 /* Assets.xcassets */,
 				F4A2E2592858244600A32CD8 /* Preview Content */,
 			);
@@ -260,7 +253,7 @@
 			);
 			name = "Athlete Habit Tracker App iOS15";
 			packageProductDependencies = (
-				0E2CA26D285DBAA400293DF0 /* SwiftUICharts */,
+				F4E4FF182864AD6300D4FD51 /* SwiftUICharts */,
 			);
 			productName = "Athlete Habit Tracker App iOS15";
 			productReference = F4A2E2502858244300A32CD8 /* Athlete Habit Tracker App iOS15.app */;
@@ -291,7 +284,7 @@
 			);
 			mainGroup = F4A2E2472858244300A32CD8;
 			packageReferences = (
-				0E2CA26C285DBAA400293DF0 /* XCRemoteSwiftPackageReference "ChartView" */,
+				F4E4FF172864AD6300D4FD51 /* XCRemoteSwiftPackageReference "ChartView" */,
 			);
 			productRefGroup = F4A2E2512858244300A32CD8 /* Products */;
 			projectDirPath = "";
@@ -343,6 +336,7 @@
 				0E50A69A2859E5FC006B78B3 /* ProfileViewDataHelper.swift in Sources */,
 				0E50A6942859E5FC006B78B3 /* TraceOptionsDataHelper.swift in Sources */,
 				0E50A6962859E5FC006B78B3 /* TraceOptionsDetailDataHelper.swift in Sources */,
+				F449D07E28695D6B0056C29E /* NextSteps.swift in Sources */,
 				F4A2E2542858244300A32CD8 /* Athlete_Habit_Tracker_App_iOS15App.swift in Sources */,
 				F4A2E27B2858278200A32CD8 /* InfoEditView.swift in Sources */,
 				F4A2E2792858276C00A32CD8 /* GoalEditView.swift in Sources */,
@@ -554,7 +548,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		0E2CA26C285DBAA400293DF0 /* XCRemoteSwiftPackageReference "ChartView" */ = {
+		F4E4FF172864AD6300D4FD51 /* XCRemoteSwiftPackageReference "ChartView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AppPear/ChartView";
 			requirement = {
@@ -565,9 +559,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		0E2CA26D285DBAA400293DF0 /* SwiftUICharts */ = {
+		F4E4FF182864AD6300D4FD51 /* SwiftUICharts */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0E2CA26C285DBAA400293DF0 /* XCRemoteSwiftPackageReference "ChartView" */;
+			package = F4E4FF172864AD6300D4FD51 /* XCRemoteSwiftPackageReference "ChartView" */;
 			productName = SwiftUICharts;
 		};
 /* End XCSwiftPackageProductDependency section */

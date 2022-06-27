@@ -15,8 +15,8 @@ struct ProgressView: View {
     @State private var selectedTime: Int = 0
     
     @Binding var selectedHabit: Int
+    
     @State var progressObj : ProgressViewDataHelper
-   // let daysOfTheWeek = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
     
     var columns = Array(repeating: GridItem(.flexible(), spacing: 10), count: 3)
 
@@ -45,14 +45,69 @@ struct ProgressView: View {
                 .frame(height: 275)
                 .padding(.horizontal)
                 .padding(.top, 10)
-
-                HStack {
-                    ForEach(0..<progressObj.getDataTypeCount()) { num in
-                        Text("\(progressObj.getDateString(index: num))")
+                
+                switch selectedTime {
+                case 0:
+                    HStack {
+                        ForEach(0..<7) { num in
+                            Text("\(progressObj.getDateString(index: num))")
+                                .frame(width: 45)
+                                .foregroundColor(.gray)
+                        }
+                    }
+                case 1:
+                    HStack(spacing: 35) {
+                        Text("\(progressObj.getDateString(index: 0))")
+                            .frame(width: 45)
+                            .foregroundColor(.gray)
+                        Text("\(progressObj.getDateString(index: 4))")
+                            .frame(width: 45)
+                            .foregroundColor(.gray)
+                        Text("\(progressObj.getDateString(index: 7))")
+                            .frame(width: 45)
+                            .foregroundColor(.gray)
+                        Text("\(progressObj.getDateString(index: 10))")
+                            .frame(width: 45)
+                            .foregroundColor(.gray)
+                        Text("\(progressObj.getDateString(index: 13))")
                             .frame(width: 45)
                             .foregroundColor(.gray)
                     }
+                case 2:
+                    HStack(spacing: 35) {
+                        Text("\(progressObj.getDateString(index: 0))")
+                            .frame(width: 45)
+                            .foregroundColor(.gray)
+                        Text("\(progressObj.getDateString(index: 6))")
+                            .frame(width: 45)
+                            .foregroundColor(.gray)
+                        Text("\(progressObj.getDateString(index: 13))")
+                            .frame(width: 45)
+                            .foregroundColor(.gray)
+                        Text("\(progressObj.getDateString(index: 20))")
+                            .frame(width: 45)
+                            .foregroundColor(.gray)
+                        Text("\(progressObj.getDateString(index: 27))")
+                            .frame(width: 45)
+                            .foregroundColor(.gray)
+                    }
+                default:
+                    HStack {
+                        ForEach(0..<7) { num in
+                            Text("\(progressObj.getDateString(index: num))")
+
+                        }
+                    }
                 }
+            
+                /*
+                HStack {
+                    ForEach(0..<progressObj.getDataTypeObj(dataType:selectedTime).getDataTypeCount()) { num in
+                        Text("\(progressObj.getDateString(index: num))")
+
+                    }
+                }
+                */
                 
                 LazyVGrid(columns: columns) {
                     Text("Date")
@@ -62,16 +117,15 @@ struct ProgressView: View {
                         .padding(5)
                         .background(Color.highblue.opacity(0.8))
                         .cornerRadius(10)
-                        .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
+                        .shadow(color: Color.black.opacity(0.2), radius: 3, x: 0, y: 2)
                     Text("\(progressObj.optionsArray[selectedHabit].unit.capitalized)")
                         .frame(width: 100)
-
                         .font(.title3.bold())
                         .foregroundColor(.white)
                         .padding(5)
                         .background(Color.highblue.opacity(0.8))
                         .cornerRadius(10)
-                        .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
+                        .shadow(color: Color.black.opacity(0.2), radius: 3, x: 0, y: 2)
                     Text("Goal Met")
                         .frame(width: 100)
                         .font(.title3.bold())
@@ -79,26 +133,112 @@ struct ProgressView: View {
                         .padding(5)
                         .background(Color.highblue.opacity(0.8))
                         .cornerRadius(10)
-                        .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
-                    ForEach(0..<progressObj.getDataTypeCount()) { num in
-                        let m = progressObj.getDetailModel(index: num, optionId: selectedHabit + 1)
-                        Text("\(progressObj.getDateString(index: num))")
-                            .font(.body.bold())
-                            .frame(width: 80, height: 30)
-                            .background(Color(.systemGray6))
-                            .cornerRadius(10)
-                        Text("\(m.inputScore)")
-                            .font(.body.bold())
-                            .frame(width: 80, height: 30)
-                            .background(Color(.systemGray6))
-                            .cornerRadius(10)
-                        Text(m.inputScore >= progressObj.optionsArray[selectedHabit].goal ? "Yes" : "No")
-                            .foregroundColor(m.inputScore >= progressObj.optionsArray[selectedHabit].goal ? Color.reptilegreen : Color.fusionred)
-                            .font(.body.bold())
-                            .frame(width: 80, height: 30)
-                            .background(Color(.systemGray6))
-                            .cornerRadius(10)
+                        .shadow(color: Color.black.opacity(0.2), radius: 3, x: 0, y: 2)
+
+                    
+                    switch selectedTime {
+                    case 0:
+                        ForEach(0..<7) { num in
+                            let m = progressObj.getDetailModel(index: num, optionId: selectedHabit + 1)
+                            Text("\(progressObj.getDateString(index: num))")
+                                .font(.body.bold())
+                                .frame(width: 80, height: 30)
+                                .background(Color(.systemGray6))
+                                .cornerRadius(10)
+                            Text("\(m.inputScore)")
+                                .font(.body.bold())
+                                .frame(width: 80, height: 30)
+                                .background(Color(.systemGray6))
+                                .cornerRadius(10)
+                            Text(m.inputScore >= progressObj.optionsArray[selectedHabit].goal ? "Yes" : "No")
+                                .foregroundColor(m.inputScore >= progressObj.optionsArray[selectedHabit].goal ? Color.reptilegreen : Color.fusionred)
+                                .font(.body.bold())
+                                .frame(width: 80, height: 30)
+                                .background(Color(.systemGray6))
+                                .cornerRadius(10)
+                        }
+                    case 1:
+                        ForEach(0..<14) { num in
+                            let m = progressObj.getDetailModel(index: num, optionId: selectedHabit + 1)
+                            Text("\(progressObj.getDateString(index: num))")
+                                .font(.body.bold())
+                                .frame(width: 80, height: 30)
+                                .background(Color(.systemGray6))
+                                .cornerRadius(10)
+                            Text("\(m.inputScore)")
+                                .font(.body.bold())
+                                .frame(width: 80, height: 30)
+                                .background(Color(.systemGray6))
+                                .cornerRadius(10)
+                            Text(m.inputScore >= progressObj.optionsArray[selectedHabit].goal ? "Yes" : "No")
+                                .foregroundColor(m.inputScore >= progressObj.optionsArray[selectedHabit].goal ? Color.reptilegreen : Color.fusionred)
+                                .font(.body.bold())
+                                .frame(width: 80, height: 30)
+                                .background(Color(.systemGray6))
+                                .cornerRadius(10)
+                        }
+                    case 2:
+                        ForEach(0..<28) { num in
+                            let m = progressObj.getDetailModel(index: num, optionId: selectedHabit + 1)
+                            Text("\(progressObj.getDateString(index: num))")
+                                .font(.body.bold())
+                                .frame(width: 80, height: 30)
+                                .background(Color(.systemGray6))
+                                .cornerRadius(10)
+                            Text("\(m.inputScore)")
+                                .font(.body.bold())
+                                .frame(width: 80, height: 30)
+                                .background(Color(.systemGray6))
+                                .cornerRadius(10)
+                            Text(m.inputScore >= progressObj.optionsArray[selectedHabit].goal ? "Yes" : "No")
+                                .foregroundColor(m.inputScore >= progressObj.optionsArray[selectedHabit].goal ? Color.reptilegreen : Color.fusionred)
+                                .font(.body.bold())
+                                .frame(width: 80, height: 30)
+                                .background(Color(.systemGray6))
+                                .cornerRadius(10)
+                        }
+                    default:
+                        ForEach(0..<7) { num in
+                            let m = progressObj.getDetailModel(index: num, optionId: selectedHabit + 1)
+                            Text("\(progressObj.getDateString(index: num))")
+                                .font(.body.bold())
+                                .frame(width: 80, height: 30)
+                                .background(Color(.systemGray6))
+                                .cornerRadius(10)
+                            Text("\(m.inputScore)")
+                                .font(.body.bold())
+                                .frame(width: 80, height: 30)
+                                .background(Color(.systemGray6))
+                                .cornerRadius(10)
+                            Text(m.inputScore >= progressObj.optionsArray[selectedHabit].goal ? "Yes" : "No")
+                                .foregroundColor(m.inputScore >= progressObj.optionsArray[selectedHabit].goal ? Color.reptilegreen : Color.fusionred)
+                                .font(.body.bold())
+                                .frame(width: 80, height: 30)
+                                .background(Color(.systemGray6))
+                                .cornerRadius(10)
+                        }
                     }
+                    /*
+                     ForEach(0..<progressObj.getDataTypeCount()) { num in
+                     let m = progressObj.getDetailModel(index: num, optionId: selectedHabit + 1)
+                     Text("\(progressObj.getDateString(index: num))")
+                     .font(.body.bold())
+                     .frame(width: 80, height: 30)
+                     .background(Color(.systemGray6))
+                     .cornerRadius(10)
+                     Text("\(m.inputScore)")
+                     .font(.body.bold())
+                     .frame(width: 80, height: 30)
+                     .background(Color(.systemGray6))
+                     .cornerRadius(10)
+                     Text(m.inputScore >= progressObj.optionsArray[selectedHabit].goal ? "Yes" : "No")
+                     .foregroundColor(m.inputScore >= progressObj.optionsArray[selectedHabit].goal ? Color.reptilegreen : Color.fusionred)
+                     .font(.body.bold())
+                     .frame(width: 80, height: 30)
+                     .background(Color(.systemGray6))
+                     .cornerRadius(10)
+                     }
+                     */
                 }
                 .padding()
                 

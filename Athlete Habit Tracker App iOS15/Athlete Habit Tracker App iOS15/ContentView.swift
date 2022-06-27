@@ -38,7 +38,7 @@ struct ContentView: View {
                 switch selectedTabIndex {
                 case 0:
                     NavigationView {
-                        DailyView( selectedTabIndex: $selectedTabIndex, selectedHabit: $selectedHabit,traceOptionsObject: traceOptionsObject)
+                        DailyView( selectedTabIndex: $selectedTabIndex, selectedHabit: $selectedHabit, traceOptionsObject: traceOptionsObject)
                             .navigationTitle("Training Habits")
                             .toolbar {
                                 HStack {

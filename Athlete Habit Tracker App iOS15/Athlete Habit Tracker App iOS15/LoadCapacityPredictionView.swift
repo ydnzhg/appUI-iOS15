@@ -27,6 +27,28 @@ struct LoadCapacityPredictionView: View {
     //let loadLastMonth: [Double] = [25,48,90,34,3,59,8,86,78,15,68,70,77,47,23,75,20,57,48,71,71,28,49,2,5,31,47,4,89,0]
     //let recoveryLastMonth: [Double] = [57,40,91,30,84,67,56,84,39,1,69,0,59,97,93,25,0,8,20,64,68,38,36,65,22,87,39,11,60,57]
     //let painLastMonth: [Double] = [10,49,84,40,5,12,51,86,47,56,87,48,24,40,85,34,98,0,82,21,85,74,6,78,24,1,3,51,99,51]
+    
+    func loadCapacityPredictionCalculation() -> Double {
+        
+        var todayIndex = dataObject.getDataTypeObj(type:selectedTimeToo).getLoadArray().count-1
+
+        var loadCapacityPrediction:Double =  dataObject.getDataTypeObj(type:selectedTimeToo).getLoadArray()[todayIndex]
+        
+        if dataObject.getDataTypeObj(type:selectedTimeToo).getPainArray()[todayIndex] < 20 {
+            loadCapacityPrediction += 10
+        }
+        else if dataObject.getDataTypeObj(type:selectedTimeToo).getPainArray()[todayIndex] <= 30 {
+            loadCapacityPrediction += 5
+        }
+        else if dataObject.getDataTypeObj(type:selectedTimeToo).getPainArray()[todayIndex] <= 60 {
+            loadCapacityPrediction -= 5
+        }
+        else if dataObject.getDataTypeObj(type:selectedTimeToo).getPainArray()[todayIndex] <= 100 {
+            loadCapacityPrediction -= 10
+        }
+        
+        return loadCapacityPrediction
+    }
                     
     var body: some View {
         ScrollView {
@@ -45,9 +67,6 @@ struct LoadCapacityPredictionView: View {
                     CardView {
                         ChartLabel("Pain", type: .subTitle)
                         LineChart()
-                       // a.onReceive(a.textToDisplay.objectWillChange) { _ in
-                                //self.textToDisplay = self.chartValue.interactionInProgress ? String(format: format, self.chartValue.currentValue) : self.title
-                       // }
                     }
                     .data(dataObject.getDataTypeObj(type:selectedTimeToo).getPainArray())
                     .chartStyle(ChartStyle(backgroundColor: .white, foregroundColor: ColorGradient(Color.fusionred.opacity(0.4), Color.fusionred)))
@@ -58,20 +77,40 @@ struct LoadCapacityPredictionView: View {
                         .chartStyle(ChartStyle(backgroundColor: .white, foregroundColor: ColorGradient(Color.flirtacious.opacity(0.4), Color.flirtacious)))
                         .frame(height: 275)
                     
-                    
                     LineChart()
                         .data(dataObject.getDataTypeObj(type:selectedTimeToo).getLoadArray())
                         .chartStyle(ChartStyle(backgroundColor: .white.opacity(0.1), foregroundColor: ColorGradient(Color.highblue.opacity(0.4), Color.highblue)))
                         .frame(height: 275)
-                    //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "kBackgroundColorChangeNotify"), object: nil, userInfo: nil)
-                  
                 }
                 .padding(.horizontal)
                 
+                HStack(spacing: 20) {
+                    HStack {
+                        Circle()
+                            .frame(width: 15, height: 15)
+                            .foregroundColor(.highblue)
+                        Text("Load")
+                    }
+                    
+                    HStack {
+                        Circle()
+                            .frame(width: 15, height: 15)
+                            .foregroundColor(.flirtacious)
+                        Text("Recovery")
+                    }
+                    
+                    HStack {
+                        Circle()
+                            .frame(width: 15, height: 15)
+                            .foregroundColor(.fusionred)
+                        Text("Pain")
+                    }
+                }
+                .padding(.horizontal)
                 
+                /*
                 HStack {
                     VStack(spacing: 10) {
-                       // NotificationCenter.default.post(name: NSNotification.Name(rawValue: "kBackgroundColorChangeNotify"), object: nil, userInfo: nil)
                         Text("\(0)")
                             .font(.title2.bold())
                         Text("Load Calculation")
@@ -102,13 +141,14 @@ struct LoadCapacityPredictionView: View {
                     .cornerRadius(10)
                 }
                 .padding(.horizontal)
+                 */
                 
                 HStack {
                     Text("Load Capacity Estimate:")
                         .font(.body.bold())
                         .padding()
                         .background(Color(.systemGray6))
-                    Text("50")
+                    Text("\(Int(loadCapacityPredictionCalculation()))")
                         .font(.body.bold())
                         .foregroundColor(.white)
                         .padding()
@@ -116,18 +156,41 @@ struct LoadCapacityPredictionView: View {
                         .clipShape(RoundedRectangle(cornerSize: CGSize()))
                 }
                 .cornerRadius(10)
-                .shadow(color: Color.black.opacity(0.2), radius: 3, x: 0, y: 3)
-
+                .shadow(color: Color.black.opacity(0.2), radius: 3, x: 0, y: 2)
+                
                 Spacer()
                 
+                /*
+                ForEach(0..<dataObject.getDataTypeObj(type:selectedTimeToo).getLoadArray().count) { num in
+                    HStack {
+                        Text("\(dataObject.getDataTypeObj(type:selectedTimeToo).getLoadArray()[num])")
+                            .background(dataObject.getDataTypeObj(type:selectedTimeToo).getPainArray()[num] <= 30 ? Color.reptilegreen : Color.fusionred)
+                        
+                        Text("\(dataObject.getDataTypeObj(type:selectedTimeToo).getPainArray()[num])")
+                    }
+                }
+                
+                HStack {
+                    Text("Estimate")
+                    
+                    Text("\(dataObject.getDataTypeObj(type:selectedTimeToo).getLoadArray()[(dataObject.getDataTypeObj(type:selectedTimeToo).getLoadArray().count-1)])")
+                        .background(dataObject.getDataTypeObj(type:selectedTimeToo).getPainArray()[(dataObject.getDataTypeObj(type:selectedTimeToo).getLoadArray().count-1)] <= 30 ? Color.reptilegreen : Color.fusionred)
+                    Text("\(dataObject.getDataTypeObj(type:selectedTimeToo).getPainArray()[(dataObject.getDataTypeObj(type:selectedTimeToo).getLoadArray().count-1)])")
+                }
+                
+                HStack {
+                    Text("Calculated Estimate")
+                    
+                    Text("\(loadCapacityPredictionCalculation())")
+                }
+                */
             }
         }
     }
 }
 
-//struct LoadCapacityPredictionView_Previews: PreviewProvider {
- //   static var previews: some View {
-  //      LoadCapacityPredictionView(trainingHabits: .constant(TrainingHabit.sampleData), workoutInfo: .constant(WorkoutInfo.today))
-  //  }
-//}
-
+struct LoadCapacityPredictionView_Previews: PreviewProvider {
+    static var previews: some View {
+        LoadCapacityPredictionView()
+    }
+}

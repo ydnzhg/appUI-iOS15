@@ -14,7 +14,7 @@ import SQLite
 struct UserInfoModel {
 
     var userID: Int = 1
-    var userName: String = ""
+    var userName: String = "name"
     var heightFeetEx: Int = 0
     var heightInchesEx: Int = 0
     var weight: Double = 0.0
@@ -101,15 +101,6 @@ class UserInfoDataObject: ObservableObject {
             self.picturePath = "placeholderpfp"
         }
         
-    }
-    func inputUserInfo() -> Bool
-    {
-        var res = true
-        if(self.userName.count > 0)
-        {
-            res = false
-        }
-        return res
     }
     func getHeight() -> Int
     {

@@ -51,13 +51,13 @@ class TraceOptionsDataHelper: DataHelperProtocol {
             {
                 return;
             }
-            var res = try insert(item: TraceOptionsDataModel(dataID: 1, title: "Sleep",goal: 8,unit: "hours",shortUnits: "h",icon: "powersleep"))
-            res = try insert(item: TraceOptionsDataModel(dataID: 2, title: "Hydration",goal: 64,unit: "oz",shortUnits: "h",icon: "drop.fill"))
+            var res = try insert(item: TraceOptionsDataModel(dataID: 1, title: "Sleep",goal: 8,unit: "hours",shortUnits: "hrs",icon: "powersleep"))
+            res = try insert(item: TraceOptionsDataModel(dataID: 2, title: "Hydration",goal: 64,unit: "ounces",shortUnits: "oz",icon: "drop.fill"))
             res = try insert(item: TraceOptionsDataModel(dataID: 3, title: "Protein Intake",goal: 160,unit: "grams",shortUnits: "g",icon: "fork.knife"))
-            res = try insert(item: TraceOptionsDataModel(dataID: 4, title: "Calorie Intake",goal: 2300,unit: "cal",shortUnits: "c",icon: "bolt.fill"))
-            res = try insert(item: TraceOptionsDataModel(dataID: 5, title: "Stretching",goal: 15,unit: "min",shortUnits: "m",icon: "stopwatch.fill"))
-            res = try insert(item: TraceOptionsDataModel(dataID: 6, title: "Workout",goal: 60,unit: "min",shortUnits: "m",icon: "figure.walk"))
-            res = try insert(item: TraceOptionsDataModel(dataID: 7, title: "Weight",goal: 160,unit: "pounds",shortUnits: "1bs",icon: "scalemass.fill"))
+            res = try insert(item: TraceOptionsDataModel(dataID: 4, title: "Calorie Intake",goal: 2300,unit: "kcals",shortUnits: "cal",icon: "bolt.fill"))
+            res = try insert(item: TraceOptionsDataModel(dataID: 5, title: "Stretching",goal: 15,unit: "minutes",shortUnits: "min",icon: "stopwatch.fill"))
+            res = try insert(item: TraceOptionsDataModel(dataID: 6, title: "Workout",goal: 60,unit: "minutes",shortUnits: "min",icon: "figure.walk"))
+            res = try insert(item: TraceOptionsDataModel(dataID: 7, title: "Weight",goal: 160,unit: "pounds",shortUnits: "lbs",icon: "scalemass.fill"))
             res = try insert(item: TraceOptionsDataModel(dataID: 8, title: "Heart Rate",goal: 50,unit: "bpm",shortUnits: "bpm",icon: "heart.fill"))
         }catch _ {
             throw DataAccessError.datastoreConnectionError
