@@ -29,7 +29,18 @@ class ProfileViewDataHelper: ObservableObject {
         self.optionsArray[6].palette = .bluegrey;
         self.optionsArray[7].palette = .bluehorizon;
     }
-
+    func inputGoal() -> Bool
+    {
+        var res = false;
+        for m in optionsArray {
+            if m.goal == 0
+            {
+                res = true
+                break
+            }
+        }
+        return res
+    }
     func commitToOptionsDB()-> Bool {
         do {
             var res = true

@@ -65,9 +65,16 @@ class DailyViewDataHelper: ObservableObject {
         
         return 0;
     }
+    //alter goal
     func updateGoal() -> Void
     {
-        self.optionsArray = try! TraceOptionsDataHelper.findAll()!;
+        var tmp : [TraceOptionsDataModel]?
+        tmp = try! TraceOptionsDataHelper.findAll();
+        for  index  in 0...(tmp?.count ?? 1) - 1
+        {
+            self.optionsArray[index].goal = tmp?[index].goal ?? 0
+        }
+        
     }
     func changeDate(date:Date) -> Void
     {

@@ -45,6 +45,16 @@ class ProgressViewDataHelper
             self.date = nowDate.addingTimeInterval(nextDate)
         }
     }
+    func updateGoal() -> Void
+    {
+        var tmp : [TraceOptionsDataModel]?
+        tmp = try! TraceOptionsDataHelper.findAll();
+        for  index  in 0...(tmp?.count ?? 1) - 1
+        {
+            self.optionsArray[index].goal = tmp?[index].goal ?? 0
+        }
+        
+    }
     //index  0，1，2，3，4，5，6
     func getDetailModel(index: Int,optionId: Int) -> TraceOptionsDetailDataModel
     {

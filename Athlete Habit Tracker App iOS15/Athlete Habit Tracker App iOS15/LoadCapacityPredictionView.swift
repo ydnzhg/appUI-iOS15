@@ -45,6 +45,9 @@ struct LoadCapacityPredictionView: View {
                     CardView {
                         ChartLabel("Pain", type: .subTitle)
                         LineChart()
+                       // a.onReceive(a.textToDisplay.objectWillChange) { _ in
+                                //self.textToDisplay = self.chartValue.interactionInProgress ? String(format: format, self.chartValue.currentValue) : self.title
+                       // }
                     }
                     .data(dataObject.getDataTypeObj(type:selectedTimeToo).getPainArray())
                     .chartStyle(ChartStyle(backgroundColor: .white, foregroundColor: ColorGradient(Color.fusionred.opacity(0.4), Color.fusionred)))
@@ -55,16 +58,20 @@ struct LoadCapacityPredictionView: View {
                         .chartStyle(ChartStyle(backgroundColor: .white, foregroundColor: ColorGradient(Color.flirtacious.opacity(0.4), Color.flirtacious)))
                         .frame(height: 275)
                     
+                    
                     LineChart()
                         .data(dataObject.getDataTypeObj(type:selectedTimeToo).getLoadArray())
                         .chartStyle(ChartStyle(backgroundColor: .white.opacity(0.1), foregroundColor: ColorGradient(Color.highblue.opacity(0.4), Color.highblue)))
                         .frame(height: 275)
+                    //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "kBackgroundColorChangeNotify"), object: nil, userInfo: nil)
+                  
                 }
                 .padding(.horizontal)
                 
                 
                 HStack {
                     VStack(spacing: 10) {
+                       // NotificationCenter.default.post(name: NSNotification.Name(rawValue: "kBackgroundColorChangeNotify"), object: nil, userInfo: nil)
                         Text("\(0)")
                             .font(.title2.bold())
                         Text("Load Calculation")
