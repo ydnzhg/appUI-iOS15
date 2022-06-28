@@ -108,6 +108,7 @@ struct ContentView: View {
                          if(isGoalAlter)
                          {
                              traceOptionsObject.updateGoal()
+                             progressObj.updateGoal()
                          }
                         isGoalAlter = false;
                     }
