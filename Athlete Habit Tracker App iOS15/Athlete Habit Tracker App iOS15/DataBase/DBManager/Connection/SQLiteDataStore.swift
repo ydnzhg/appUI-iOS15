@@ -1,11 +1,3 @@
-//
-//  SQLiteDataStore.swift
-//
-//
-//  Created by yejf on 2022/5/28.
-//  Copyright © 2022年 yejf. All rights reserved.
-//
-
 import Foundation
 import SQLite
 
@@ -73,7 +65,7 @@ class SQLiteDataStore {
             try TraceOptionsDetailDataHelper.createTable()
             try RehabDataHelper.createTable()
             initOk = true
-            //TraceOptionsDetailDataHelper.testDemo()
+
         } catch {
             throw DataAccessError.datastoreConnectionError
         }

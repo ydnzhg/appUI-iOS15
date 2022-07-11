@@ -11,6 +11,7 @@ enum Palette: String, CaseIterable, Identifiable, ShapeStyle {
     case royalblue
     case bluegrey
     case bluehorizon
+    case desire
     case flirtacious
     case fusionred
     case gloomypurple
@@ -23,7 +24,7 @@ enum Palette: String, CaseIterable, Identifiable, ShapeStyle {
     
     var accentColor: Color {
         switch self {
-        case .royalblue, .bluegrey, .bluehorizon, .flirtacious, .fusionred, .gloomypurple, .highblue, .lighterpurple, .maximumbluegreen, .orangehibiscus, .reptilegreen, .twinkleblue: return .white
+        case .royalblue, .bluegrey, .bluehorizon, .desire, .flirtacious, .fusionred, .gloomypurple, .highblue, .lighterpurple, .maximumbluegreen, .orangehibiscus, .reptilegreen, .twinkleblue: return .white
         }
     }
     var mainColor: Color {
@@ -42,6 +43,7 @@ extension Color {
     static let royalblue = Color("royalblue")
     static let bluegrey = Color("bluegrey")
     static let bluehorizon = Color("bluehorizon")
+    static let desire = Color("desire")
     static let flirtacious = Color("flirtacious")
     static let fusionred = Color("fusionred")
     static let gloomypurple = Color("gloomypurple")

@@ -1,11 +1,3 @@
-//
-//  DataModel.swift
-//  TraceOptionsDataModel-Swift
-//
-//  Created by yejf on 2022/5/28.
-//  Copyright © 2022年 yejf. All rights reserved.
-//
-
 import Foundation
 import UIKit
 import SQLite
@@ -14,7 +6,7 @@ import SQLite
 struct UserInfoModel {
 
     var userID: Int = 1
-    var userName: String = "name"
+    var userName: String = ""
     var heightFeetEx: Int = 0
     var heightInchesEx: Int = 0
     var weight: Double = 0.0

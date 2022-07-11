@@ -2,7 +2,7 @@
 //  TrainingHabitView.swift
 //  Athlete Habit Tracker App iOS15
 //
-//  Created by Zhang, Xiaodong on 6/13/22.
+//  Created by Zhang, Andy on 6/13/22.
 //
 
 import SwiftUI

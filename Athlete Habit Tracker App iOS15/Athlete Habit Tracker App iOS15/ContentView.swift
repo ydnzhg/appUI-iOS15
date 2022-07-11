@@ -2,19 +2,21 @@
 //  ContentView.swift
 //  Athlete Habit Tracker App iOS15
 //
-//  Created by Zhang, Xiaodong on 6/13/22.
+//  Created by Zhang, Andy on 6/13/22.
 //
 
 import SwiftUI
 
 struct ContentView: View {
     
+    /*
     @Binding var user: User
     
     @Binding var trainingHabits: [TrainingHabit]
     
     @Binding var workoutInfo: WorkoutInfo
-    
+    */
+     
     @State private var selectedHabit: Int = 0
 
     @State private var date = Date()
@@ -33,12 +35,11 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            // custom tab bar
             ZStack {
                 switch selectedTabIndex {
                 case 0:
                     NavigationView {
-                        DailyView( selectedTabIndex: $selectedTabIndex, selectedHabit: $selectedHabit, traceOptionsObject: traceOptionsObject)
+                        DailyView(selectedTabIndex: $selectedTabIndex, selectedHabit: $selectedHabit, traceOptionsObject: traceOptionsObject)
                             .navigationTitle("Training Habits")
                             .toolbar {
                                 HStack {
@@ -121,6 +122,7 @@ struct ContentView: View {
             
             Divider()
                 .padding(.bottom, 10)
+                .padding(.top, -10)
             
             HStack {
                 ForEach(0..<5) { num in
@@ -142,6 +144,8 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(user: .constant(User.sampleData), trainingHabits: .constant(TrainingHabit.sampleData), workoutInfo: .constant(WorkoutInfo.today))
+        ContentView()
     }
 }
+
+// user: .constant(User.sampleData), trainingHabits: .constant(TrainingHabit.sampleData), workoutInfo: .constant(WorkoutInfo.today)

@@ -2,7 +2,7 @@
 //  InfoEditView.swift
 //  Athlete Habit Tracker App iOS15
 //
-//  Created by Zhang, Xiaodong on 6/13/22.
+//  Created by Zhang, Andy on 6/13/22.
 //
 
 import SwiftUI
@@ -10,6 +10,7 @@ import SwiftUI
 struct InfoEditView: View {
     
     @ObservedObject var user: UserInfoDataObject
+    
     var body: some View {
         
         VStack(spacing: 20) {
@@ -51,7 +52,7 @@ struct NameEditTextField: View {
                 .font(.system(size: 25))
                 .frame(width: 60, height: 60)
                 .foregroundColor(.white)
-                .background(Color.fusionred)
+                .background(Color.highblue)
                 .clipShape(Circle())
                 .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
             TextField(label, text: $value)
@@ -77,7 +78,7 @@ struct GenderPicker: View {
                 .font(.system(size: 25))
                 .frame(width: 60, height: 60)
                 .foregroundColor(.white)
-                .background(Color.fusionred)
+                .background(Color.highblue)
                 .clipShape(Circle())
                 .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
             HStack {
@@ -116,7 +117,7 @@ struct InfoEditTextField: View {
                 .font(.system(size: 25))
                 .frame(width: 60, height: 60)
                 .foregroundColor(.white)
-                .background(Color.fusionred)
+                .background(Color.highblue)
                 .clipShape(Circle())
                 .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
 
@@ -127,15 +128,24 @@ struct InfoEditTextField: View {
                 TextField("info", value: $value, format: .number)
                     .font(.body.bold())
                     .foregroundColor(.highblue)
-                    .frame(width: 30)
+                    .padding(5)
+                    .padding(.horizontal, 3)
+                    .background(Color.white)
+                    .cornerRadius(10)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.black.opacity(0.4), lineWidth: 1)
+                    )
                 Text(units)
                     .foregroundColor(Color.black.opacity(0.7))
                     .padding(.trailing,10)
                     .frame(width: 40)
+
             }
             .padding()
             .padding(.leading, 60)
             .frame(height: 60)
+            .frame(maxWidth: .infinity)
             .background(Color.bluegrey.opacity(0.1))
             .clipShape(Capsule())
         }

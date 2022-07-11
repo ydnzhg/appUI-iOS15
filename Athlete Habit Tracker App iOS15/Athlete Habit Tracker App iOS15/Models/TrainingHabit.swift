@@ -72,6 +72,6 @@ extension TrainingHabit {
         TrainingHabit(type: "trainingHabit", title: "Stretching", goal: 15, units: "minutes", shortUnits: "min", icon: "stopwatch.fill", lastWeek: [11,17,15,19,15,19,14], today: 0, palette: .reptilegreen),
         TrainingHabit(type: "trainingHabit", title: "Workout", goal: 60, units: "minutes", shortUnits: "min", icon: "figure.walk", lastWeek: [73,50,63,45,60,46,48], today: 0, palette: .fusionred),
         TrainingHabit(type: "measurement", title: "Weight", goal: 160, units: "pounds", shortUnits: "lbs", icon: "scalemass.fill", lastWeek: [155,157,157,159,156,163,162], today: 0, palette: .bluegrey),
-        TrainingHabit(type: "measurement", title: "Heart Rate", goal: 50, units: "bpm", shortUnits: "bpm", icon: "heart.fill", lastWeek: [54,59,52,54,60,53,50], today: 0, palette: .bluehorizon)
+        TrainingHabit(type: "measurement", title: "Heart Rate", goal: 50, units: "bpm", shortUnits: "bpm", icon: "heart.fill", lastWeek: [54,59,52,54,60,53,50], today: 0, palette: .desire)
     ]
 }

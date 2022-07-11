@@ -2,24 +2,22 @@
 //  TrainingHabitInputView.swift
 //  Athlete Habit Tracker App iOS15
 //
-//  Created by Zhang, Xiaodong on 6/13/22.
+//  Created by Zhang, Andy on 6/13/22.
 //
 
 import SwiftUI
 
 struct TrainingHabitInputView: View {
     
-   // @Binding var trainingHabits: [TrainingHabit]
     @ObservedObject var traceOptionsObject : DailyViewDataHelper
+    
     var body: some View {
         ScrollView {
             VStack(spacing: 15) {
                 ForEach(0..<traceOptionsObject.optionsArray.count) { num in
                     TrainingHabitInputTextField(trainingHabit: $traceOptionsObject.optionsArray[num], placeholder: "\(traceOptionsObject.optionsArray[num].title)")
                 }
-                //ForEach($trainingHabits) { $trainingHabit in
-                 //   TrainingHabitInputTextField(trainingHabit: $trainingHabit, placeholder: "\(trainingHabit.title)")
-                //}
+
                 Spacer()
             }
         }
@@ -49,14 +47,21 @@ struct TrainingHabitInputTextField: View {
             HStack {
                 Text("\(placeholder): ")
                     .foregroundColor(Color.black.opacity(0.7))
-                Spacer()
                 TextField("\(trainingHabit.unit)", value: $trainingHabit.inputScore, format: .number)
                     .font(.body.bold())
                     .foregroundColor(.highblue)
-                    .frame(width: 100)
+                    .padding(5)
+                    .padding(.horizontal, 3)
+                    .background(Color.white)
+                    .cornerRadius(10)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.black.opacity(0.4), lineWidth: 1)
+                    )
             }
             .padding()
             .padding(.leading, 60)
+            .frame(maxWidth: .infinity)
             .frame(height: 60)
             .background(Color.bluegrey.opacity(0.1))
             .clipShape(Capsule())

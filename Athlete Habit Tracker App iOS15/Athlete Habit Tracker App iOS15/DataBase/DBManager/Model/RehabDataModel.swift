@@ -1,10 +1,3 @@
-//
-//  RehabDataModel.swift
-//  Athlete Habit Tracker App SwiftUI
-//
-//  Created by 叶建锋 on 2022/6/1.
-//
-
 import Foundation
 import UIKit
 import SQLite

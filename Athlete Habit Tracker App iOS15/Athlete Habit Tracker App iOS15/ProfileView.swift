@@ -2,7 +2,7 @@
 //  ProfileView.swift
 //  Athlete Habit Tracker App iOS15
 //
-//  Created by Zhang, Xiaodong on 6/13/22.
+//  Created by Zhang, Andy on 6/13/22.
 //
 
 import SwiftUI
@@ -11,7 +11,6 @@ struct ProfileView: View {
     
     @State private var isPresentingInfoEditView = false
     @State private var isPresentingGoalEditView = false
-    @State private var isPresentingQuoteEditView = false
 
     @Binding var isGoalAlter : Bool
     @ObservedObject var user = UserInfoDataObject()

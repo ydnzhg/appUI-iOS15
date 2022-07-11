@@ -2,16 +2,14 @@
 //  ProgressView.swift
 //  Athlete Habit Tracker App iOS15
 //
-//  Created by Zhang, Xiaodong on 6/13/22.
+//  Created by Zhang, Andy on 6/13/22.
 //
 
 import SwiftUI
 import SwiftUICharts
 
 struct ProgressView: View {
-    
-   // @Binding var trainingHabits: [TrainingHabit]
-    
+        
     @State private var selectedTime: Int = 0
     
     @Binding var selectedHabit: Int
@@ -30,15 +28,15 @@ struct ProgressView: View {
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 .padding(.horizontal)
-                //progressObj.changeDataType(dataType: DataInTime.LastMonth)
+                
                 CardView {
                     ChartLabel("\(progressObj.getDataTypeObj(dataType:selectedTime).optionsArray[selectedHabit].title)", type: .subTitle)
-                   // if trainingHabits[selectedHabit].type == "trainingHabit" {
+                    if TrainingHabit.sampleData[selectedHabit].type == "trainingHabit" {
                         BarChart()
-                   // }
-                    //else {
-                        //LineChart()
-                    //}
+                    }
+                    else {
+                        LineChart()
+                    }
                 }
                 .data(progressObj.getDataTypeObj(dataType:selectedTime).getTypeAllData(optionId: selectedHabit).map { Double($0) })
                 .chartStyle(ChartStyle(backgroundColor: .white, foregroundColor: ColorGradient(Color.highblue.opacity(0.5), Color.highblue.opacity(0.8))))
@@ -99,16 +97,7 @@ struct ProgressView: View {
                         }
                     }
                 }
-            
-                /*
-                HStack {
-                    ForEach(0..<progressObj.getDataTypeObj(dataType:selectedTime).getDataTypeCount()) { num in
-                        Text("\(progressObj.getDateString(index: num))")
 
-                    }
-                }
-                */
-                
                 LazyVGrid(columns: columns) {
                     Text("Date")
                         .frame(width: 100)
@@ -218,27 +207,6 @@ struct ProgressView: View {
                                 .cornerRadius(10)
                         }
                     }
-                    /*
-                     ForEach(0..<progressObj.getDataTypeCount()) { num in
-                     let m = progressObj.getDetailModel(index: num, optionId: selectedHabit + 1)
-                     Text("\(progressObj.getDateString(index: num))")
-                     .font(.body.bold())
-                     .frame(width: 80, height: 30)
-                     .background(Color(.systemGray6))
-                     .cornerRadius(10)
-                     Text("\(m.inputScore)")
-                     .font(.body.bold())
-                     .frame(width: 80, height: 30)
-                     .background(Color(.systemGray6))
-                     .cornerRadius(10)
-                     Text(m.inputScore >= progressObj.optionsArray[selectedHabit].goal ? "Yes" : "No")
-                     .foregroundColor(m.inputScore >= progressObj.optionsArray[selectedHabit].goal ? Color.reptilegreen : Color.fusionred)
-                     .font(.body.bold())
-                     .frame(width: 80, height: 30)
-                     .background(Color(.systemGray6))
-                     .cornerRadius(10)
-                     }
-                     */
                 }
                 .padding()
                 

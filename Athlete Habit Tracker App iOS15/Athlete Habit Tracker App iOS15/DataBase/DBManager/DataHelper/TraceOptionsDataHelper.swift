@@ -1,10 +1,3 @@
-//
-//  TraceOptionsDataHelper.swift
-//  Athlete Habit Tracker App SwiftUI
-//
-//  Created by 叶建锋 on 2022/5/29.
-//
-
 import Foundation
 import SQLite
 
